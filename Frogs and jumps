@@ -1,0 +1,19 @@
+class Solution {
+  public:
+    int unvisitedLeaves(int N, int leaves, int frogs[]) {
+        // Code here
+        std::bitset<1000000> covered;
+        
+        for(int i=0; i<N; i++){
+            int num= frogs[i];
+            if(num<= leaves && !covered[num]){
+                for(int j=num; j<=leaves; j=j+num){
+                    covered.set(j);
+                }
+            }
+        }
+        int ans= leaves- covered.count();
+        
+        return ans;
+    }
+};
